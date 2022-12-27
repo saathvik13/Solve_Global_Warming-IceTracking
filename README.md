@@ -3,7 +3,7 @@ Problem Statement:
 2) To estimate the two boundaries using Viterbi
 3) To improve the estimate using a human feedback
 
-![plot](.problem.png)
+![plot](./problem.png)
 ---
 
 To understand how rising global temperatures affect ice at the Earth’s north and south poles, glaciologists
