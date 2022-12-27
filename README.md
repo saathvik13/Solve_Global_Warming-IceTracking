@@ -3,10 +3,50 @@ Problem Statement:
 2) To estimate the two boundaries using Viterbi
 3) To improve the estimate using a human feedback
 
-Emission Probability: (Edge_strength of each pixel)/(Total Edge_strengths of that column)
-Transition Probability: (0.1 if the (difference between the row of current column and the row of previous column) is less than 2), (else it is 0.01)
+![plot](.problem.png)
+---
 
-Solution:
+To understand how rising global temperatures affect ice at the Earth’s north and south poles, glaciologists
+need information about the structure of the ice sheets. The traditional way of doing this is to drill into the
+ice and remove an ice core. But a single ice core can take many months to drill, and only gives information
+about the ice at a single latitude-longitude point. To expedite this process, scientists have developed radar
+systems that allow an airplane to collect an approximate “cross section” of the ice below the airplane’s flight
+path (Fig 2a). This produces a radar echogram like the one shown in Fig 2b. The horizontal axis is the
+distance along the flight path, while the vertical axis is the depth below the plane. The echogram shows
+two prominent features. One is the very dark line near the top, which is the boundary between the air
+and the ice. There’s also a deeper line which shows the boundary between the ice and the bedrock. Fig
+2c shows the same echogram but with the air-ice (red) and ice-rock (green) boundaries manually labeled.
+These echograms reveal the complex structure of the ice — note the ridges and valleys in the bedrock in Fig
+2c, for example — and contain rich information for glaciologists to calculate volumes of ice and to estimate
+how it will change with warming temperatures. But as you can see from the figure, these echograms are also
+extremely noisy, so finding the layer boundaries is quite challenging. Even human experts, when presented
+with the same echogram, often disagree on where the boundaries are.
+
+In this part, we’ll create code to try to find these two boundaries (air-ice and ice-rock). We’ll make some
+assumptions to make this possible. First, you can assume that the air-ice boundary is always above the
+ice-rock boundary by a significant margin (say, 10 pixels). Second, you can assume that the two boundaries
+span the entire width of the image. Taken together these, two assumptions mean that in each column of the
+image, there is exactly one air-ice boundary and exactly one ice-rock boundary, and the ice-rock boundary is
+always below. Third, we assume that each boundary is relatively “smooth” — that is, a boundary’s row in
+one column will be similar in the next column. Finally, you can assume that the pixels along the boundaries
+are generally dark and along a strong image edge (sharp change in pixel values)..
+
+
+
+
+
+
+
+
+
+---
+
+### Emission Probability: (Edge_strength of each pixel)/(Total Edge_strengths of that column)
+### Transition Probability: (0.1 if the (difference between the row of current column and the row of previous column) is less than 2), (else it is 0.01)
+
+---
+
+### Solution:
 1)
 - In this, we calculated the emission probability of each pixel.
 - Then, the maximum emission probability of each column of the image was computed and the row number of it has been saved.
